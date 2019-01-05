@@ -43,6 +43,9 @@ public class Main extends Application {
 
                     String regInfo = extractor.getResult();
 
+                    RegDataWriter writer = new RegDataWriter(dir.getAbsolutePath(), regInfo);
+                    writer.saveToFile();
+
 
 
                     textArea.setText(dir.getAbsolutePath() + "\n" + regInfo);
