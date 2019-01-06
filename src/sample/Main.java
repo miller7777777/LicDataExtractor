@@ -19,24 +19,26 @@ import java.awt.*;
 
 public class Main extends Application {
 
+    public static final String WINDOW_TITLE = "LicDataExtractor version. 1.00";
+    public static final String BUTTON_LABLE = "Выбор папки";
+    private File dir = null;
+
     @Override
     public void start(final Stage primaryStage) throws Exception{
-//        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
-//        primaryStage.setTitle("Hello World");
-//        primaryStage.setScene(new Scene(root, 300, 275));
-//        primaryStage.show();
 
         final DirectoryChooser directoryChooser = new DirectoryChooser();
         configuringDirectoryChooser(directoryChooser);
 
         final TextArea textArea = new TextArea();
         textArea.setMinHeight(70);
-        Button button = new Button("Open DirectoryChooser and select a directory");
+        Button button = new Button(BUTTON_LABLE);
 
         button.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                File dir = directoryChooser.showDialog(primaryStage);
+                textArea.setText("Ждите...");
+                configuringDirectoryChooser(directoryChooser);
+                dir = directoryChooser.showDialog(primaryStage);
 
                 if (dir != null) {
                     Extractor extractor = new Extractor(dir.getAbsolutePath());
@@ -62,7 +64,7 @@ public class Main extends Application {
 
         Scene scene = new Scene(root, 400, 200);
 
-        primaryStage.setTitle("JavaFX DirectoryChooser (o7planning.org)");
+        primaryStage.setTitle(WINDOW_TITLE);
         primaryStage.setScene(scene);
         primaryStage.show();
 
@@ -71,10 +73,13 @@ public class Main extends Application {
 
     private void configuringDirectoryChooser(DirectoryChooser directoryChooser) {
         // Set title for DirectoryChooser
-        directoryChooser.setTitle("Select Some Directories");
+        directoryChooser.setTitle("Выберите папку: ");
 
         // Set Initial Directory
 //        directoryChooser.setInitialDirectory(new File(System.getProperty("user.home")));
+        if(dir != null){
+            directoryChooser.setInitialDirectory(dir);
+        }
     }
 
 

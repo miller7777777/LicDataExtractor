@@ -16,8 +16,8 @@ public class RegDataWriter {
     }
 
     public void saveToFile(){
-        fullDirectoryName = "C:\\Temp\\LicTest\\777";
-        //TODO: Для тестов, потом убрать.
+//        fullDirectoryName = "C:\\Temp\\LicTest\\777";
+//        //TODO: Для тестов, потом убрать.
         String path = fullDirectoryName + "\\" + "LicData.txt";
         System.out.println("path = " + path);
         try {

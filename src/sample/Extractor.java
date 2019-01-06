@@ -1,7 +1,5 @@
 package sample;
 
-import com.sun.xml.internal.bind.v2.TODO;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
@@ -26,20 +24,36 @@ public class Extractor {
 
     private void extract(String fullDirectoryName) {
 
-        fullDirectoryName = "C:\\Temp\\LicTest\\777";
-        //TODO: Для тестов, потом убрать.
+//        fullDirectoryName = "C:\\Temp\\LicTest\\777";
+//        //TODO: Для тестов, потом убрать.
 
         List<String> results = new ArrayList<String>();
         File folder = new File(fullDirectoryName);
         File[] listOfFiles = folder.listFiles();
 
         for (File file : listOfFiles) {
-            if(file.isFile()){
+            if (file.isFile() && file.getName().endsWith(".lic")) {
                 (results).add(file.getName());
             }
         }
 
-        licFileName = results.get(0);
+        switch (results.size()) {
+            case 0:
+                result = "В директории отсутствуют файлы программных лицензий.";
+                break;
+            case 1:
+                licFileName = results.get(0);
+                extract(fullDirectoryName, results);
+                break;
+            default:
+                result = "В директории должен быть только один файл \nпрограммной лицензии. \n\nОбнаружено файлов программных лицензий: " + results.size();
+                break;
+        }
+
+    }
+
+    private void extract(String fullDirectoryName, List<String> results) {
+
 
         String fullLicFileName = fullDirectoryName + "\\" + licFileName;
         System.out.println("fullDirectoryName = " + fullDirectoryName);
@@ -89,7 +103,6 @@ public class Extractor {
         formResult();
 
 
-
     }
 
     private void getPinRegNumber(String fullDirectoryName, String licFileName) {
@@ -126,7 +139,6 @@ public class Extractor {
 //            }
 
 
-
             proc.waitFor();
 
             proc.destroy();
@@ -150,7 +162,7 @@ public class Extractor {
         result = sb.toString();
     }
 
-    public String getResult(){
+    public String getResult() {
 //        return "bla-bla-bla " + Math.random();
         return result;
     }
