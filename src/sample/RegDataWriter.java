@@ -1,12 +1,9 @@
 package sample;
 
-import sample.model.LicInfo;
-
 import java.io.File;
 import java.io.FileWriter;
 
 public class RegDataWriter {
-    public LicInfo licInfo;
     public String fullDirectoryName;
     public String rezult;
 
@@ -15,9 +12,8 @@ public class RegDataWriter {
         this.rezult = rezult;
     }
 
-    public void saveToFile(){
-//        fullDirectoryName = "C:\\Temp\\LicTest\\777";
-//        //TODO: Для тестов, потом убрать.
+    public void saveToFile() {
+
         String path = fullDirectoryName + "\\" + "LicData.txt";
         System.out.println("path = " + path);
         try {

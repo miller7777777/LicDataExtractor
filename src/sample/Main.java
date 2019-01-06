@@ -24,7 +24,7 @@ public class Main extends Application {
     private File dir = null;
 
     @Override
-    public void start(final Stage primaryStage) throws Exception{
+    public void start(final Stage primaryStage) throws Exception {
 
         final DirectoryChooser directoryChooser = new DirectoryChooser();
         configuringDirectoryChooser(directoryChooser);
@@ -42,14 +42,12 @@ public class Main extends Application {
 
                 if (dir != null) {
                     Extractor extractor = new Extractor(dir.getAbsolutePath());
-
                     String regInfo = extractor.getResult();
 
                     if (regInfo.startsWith("Файл: ")) {
                         RegDataWriter writer = new RegDataWriter(dir.getAbsolutePath(), regInfo);
                         writer.saveToFile();
                     }
-
 
                     textArea.setText(dir.getAbsolutePath() + "\n" + regInfo);
                 } else {
@@ -68,8 +66,6 @@ public class Main extends Application {
         primaryStage.setTitle(WINDOW_TITLE);
         primaryStage.setScene(scene);
         primaryStage.show();
-
-
     }
 
     private void configuringDirectoryChooser(DirectoryChooser directoryChooser) {
@@ -78,7 +74,7 @@ public class Main extends Application {
 
         // Set Initial Directory
 //        directoryChooser.setInitialDirectory(new File(System.getProperty("user.home")));
-        if(dir != null){
+        if (dir != null) {
             directoryChooser.setInitialDirectory(dir);
         }
     }

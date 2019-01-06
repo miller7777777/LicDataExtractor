@@ -24,9 +24,6 @@ public class Extractor {
 
     private void extract(String fullDirectoryName) {
 
-//        fullDirectoryName = "C:\\Temp\\LicTest\\777";
-//        //TODO: Для тестов, потом убрать.
-
         List<String> results = new ArrayList<String>();
         File folder = new File(fullDirectoryName);
         File[] listOfFiles = folder.listFiles();
@@ -49,15 +46,9 @@ public class Extractor {
                 result = "В директории должен быть только один файл \nпрограммной лицензии. \n\nОбнаружено файлов программных лицензий: " + results.size();
                 break;
         }
-
     }
 
     private void extract(String fullDirectoryName, List<String> results) {
-
-
-        String fullLicFileName = fullDirectoryName + "\\" + licFileName;
-        System.out.println("fullDirectoryName = " + fullDirectoryName);
-        System.out.println("fullLicFileName = " + fullLicFileName);
 
         getPinRegNumber(fullDirectoryName, licFileName);
         getRegDataInfo(fullDirectoryName, pinCode, regNumber);
@@ -84,7 +75,6 @@ public class Extractor {
                 regDataList.add(s);
 
             }
-            System.out.println("s = " + s);
 
 //             read any errors from the attempted command
             System.out.println("Here is the standard error of the command (if any):\n");
@@ -93,7 +83,6 @@ public class Extractor {
             }
 
             proc.waitFor();
-
             proc.destroy();
 
         } catch (Exception e) {
@@ -101,15 +90,11 @@ public class Extractor {
         }
 
         formResult();
-
-
     }
 
     private void getPinRegNumber(String fullDirectoryName, String licFileName) {
         try {
             String argument = "ring.cmd license list --path " + fullDirectoryName;
-//            String argument1 = "cmd ring license list --path " + fullDirectoryName;
-//            String argument = "ring.cmd ";
 
             Process proc = Runtime.getRuntime().exec(argument);
             BufferedReader stdInput = new BufferedReader(new
@@ -127,20 +112,14 @@ public class Extractor {
                 pinCode = pinReg[0];
                 regNumber = pinReg[1];
             }
-            System.out.println("s = " + s);
-
-            System.out.println("pinCode = " + pinCode);
-            System.out.println("regNumber = " + regNumber);
 
 // read any errors from the attempted command
-//            System.out.println("Here is the standard error of the command (if any):\n");
-//            while ((s = stdError.readLine()) != null) {
-//                System.out.println(s);
-//            }
-
+            System.out.println("Here is the standard error of the command (if any):\n");
+            while ((s = stdError.readLine()) != null) {
+                System.out.println(s);
+            }
 
             proc.waitFor();
-
             proc.destroy();
         } catch (IOException e) {
             e.printStackTrace();
@@ -163,9 +142,7 @@ public class Extractor {
     }
 
     public String getResult() {
-//        return "bla-bla-bla " + Math.random();
+
         return result;
     }
-
-
 }
