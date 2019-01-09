@@ -40,4 +40,4 @@ LicDataExtractor служит лишь оберткой над этой утил
 
 Замечания и пожелания пишите на адрес: miller777@mail.ru
 
-Downloads: https://github.com/miller7777777/LicDataExtractor/releases
+Downloads: https://github.com/miller7777777/LicDataExtractor/releases/latest
