@@ -131,12 +131,12 @@ public class Extractor {
 
     private void formResult() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Файл: " + licFileName + "\n");
-        sb.append("Пин-код: " + pinCode + "\n");
-        sb.append("Рег.номер: " + regNumber + "\n");
+        sb.append("Файл: " + licFileName + "\r\n");
+        sb.append("Пин-код: " + pinCode + "\r\n");
+        sb.append("Рег.номер: " + regNumber + "\r\n");
 
         for (int i = 0; i < regDataList.size(); i++) {
-            sb.append(regDataList.get(i) + "\n");
+            sb.append(regDataList.get(i) + "\r\n");
         }
         result = sb.toString();
     }

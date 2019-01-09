@@ -19,7 +19,7 @@ import java.awt.*;
 
 public class Main extends Application {
 
-    public static final String WINDOW_TITLE = "LicDataExtractor version. 1.00";
+    public static final String WINDOW_TITLE = "LicDataExtractor version. 1.01";
     public static final String BUTTON_LABLE = "Выбор папки";
     private File dir = null;
 
