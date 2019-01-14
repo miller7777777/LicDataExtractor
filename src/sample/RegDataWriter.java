@@ -12,9 +12,9 @@ public class RegDataWriter {
         this.rezult = rezult;
     }
 
-    public void saveToFile() {
+    public void saveToFile(String licFileName) {
 
-        String path = fullDirectoryName + "\\" + "LicData.txt";
+        String path = fullDirectoryName + "\\" + licFileName.replace(".lic", "") + "_LicData.txt";
         System.out.println("path = " + path);
         try {
             File file = new File(path);

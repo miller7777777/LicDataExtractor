@@ -22,6 +22,7 @@ public class Main extends Application {
     public static final String WINDOW_TITLE = "LicDataExtractor version. 1.01";
     public static final String BUTTON_LABLE = "Выбор папки";
     private File dir = null;
+    private String licFileName;
 
     @Override
     public void start(final Stage primaryStage) throws Exception {
@@ -46,7 +47,7 @@ public class Main extends Application {
 
                     if (regInfo.startsWith("Файл: ")) {
                         RegDataWriter writer = new RegDataWriter(dir.getAbsolutePath(), regInfo);
-                        writer.saveToFile();
+                        writer.saveToFile(extractor.getLicFileName());
                     }
 
                     textArea.setText(dir.getAbsolutePath() + "\n" + regInfo);

@@ -145,4 +145,8 @@ public class Extractor {
 
         return result;
     }
+
+    public String getLicFileName() {
+        return licFileName;
+    }
 }
